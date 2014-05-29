@@ -1,8 +1,9 @@
 var nunjucks = require('nunjucks');
 var express  = require('express');
-var app = express();
+var path     = require('path');
 
-app.listen(3012);
+var app = express();
+app.use(express.static(path.join(__dirname, 'static')));
 
 nunjucks.configure('views', {
     autoescape: true,
@@ -20,3 +21,7 @@ app.get('/', function(req, res){
         ]
     });
 });
+
+app.listen(3012);
+console.log("listening on port 3012");
+
